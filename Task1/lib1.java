@@ -1,4 +1,4 @@
-package HW1;
+package Task1;
 
 import java.util.Scanner;
 
@@ -50,13 +50,13 @@ public class lib1 {
         Scanner scan = new Scanner(System.in);
         System.out.printf("%s %s %s %s", "Введите", sep1, "число", end);
         int number = Integer.parseInt(scan.nextLine());
-
+        //scan.close();
         return number;
 
     }
 
     public static void calc() {
-        Scanner scan = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("\033[H\033[J");
         System.out.println("Калькулятор");
 
@@ -67,7 +67,7 @@ public class lib1 {
                         "2 - вычитание\n" +
                         "3 - умножение\n" +
                         "4 - деление\n");
-        String oper = scan.nextLine();
+        String oper = sc.nextLine();
         int number2 = getNumber("2", ": ");
         double result = 0;
         switch (oper) {
@@ -101,7 +101,7 @@ public class lib1 {
         }
         System.out.printf("%d %s %d %s %.2f\n", number1, oper, number2, "=", result);
         System.out.println("Продолжить c калькулятором? 1 - да / 2 - нет");
-        String cont = scan.nextLine();
+        String cont = sc.nextLine();
         switch (cont) {
             case "1":
                 calc();
@@ -110,10 +110,10 @@ public class lib1 {
                 menu();
             default:
                 System.out.printf("Не корректный выбор, 1 - да / 2 - нет");
-                scan.nextLine();
+                sc.nextLine();
                 break;
         }
-
+        sc.close();
     }
 
     public static void menu() {
@@ -125,9 +125,9 @@ public class lib1 {
                         "3 - Вывести все простые числа от 1 до 1000\n" +
                         "4 - Калькулятор");
         System.out.println();
-        Scanner scan = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         System.out.printf("Введите номер задачи: ");
-        String str = scan.nextLine();
+        String str = s.nextLine();
 
         switch (str) {
             case "1":
@@ -147,7 +147,7 @@ public class lib1 {
 
                 break;
         }
-
+        s.close();
     }
 
 }
