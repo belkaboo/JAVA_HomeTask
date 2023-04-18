@@ -29,21 +29,19 @@ public class lib1 {
 
     }
 
-    static String simpleNumbers() {
-        String numbers = "2, 3, 5, 7, ";
-        for (int i = 8; i < 1000; i++) {
-            if (checkDivider(i)) {
-                numbers += i + ", ";
+    public static void simpleNumbers() {
+        int count = 0;
+        System.out.println("Простые числа от 1 до 1000:");
+        for (int i = 2; i <= 1000; i++) {
+            count = 0;
+            for (int j = 2; j <= 43; j++) {
+                if (i % j == 0 & j != i) {
+                    count++;
+                    if (count == 1) break;
+                }
             }
+            if (count == 0) System.out.print(i + " ");
         }
-        return numbers.substring(0, numbers.length() - 2);
-    }
-
-    static boolean checkDivider(int number) {
-        if (number % 2 == 0 || number % 3 == 0 || number % 5 == 0 || number % 7 == 0) {
-            return false;
-        } else
-            return true;
     }
 
     public static int getNumber(String sep1, String end) {
@@ -137,7 +135,7 @@ public class lib1 {
                 System.out.printf("%s %d\n", "Результат - ", factorial(getNumber("", "N: ")));
                 break;
             case "3":
-                System.out.printf("%s %s\n", "Результат - ", simpleNumbers());
+                simpleNumbers();
                 break;
             case "4":
                 calc();

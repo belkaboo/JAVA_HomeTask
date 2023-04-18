@@ -6,7 +6,7 @@ import java.util.Random;
 public class main {
     public static void main(String[] args) {
         System.out.print("\033[H\033[J");
-        ArrayList<Integer> checkList = FillRandomArrayList(6, 10); // 
+        ArrayList<Integer> checkList = FillRandomArrayList(6, 10); // size - размер randomBound - верхняя граница рандома. 
         System.out.printf("%s %s\n", "Исходный - ", checkList);
         System.out.printf("%s %s\n", "Уникальные элементы -", trimPairElements(checkList));
 
@@ -27,7 +27,6 @@ public class main {
     // возвращает список уникальных элементов исходного списка
 
     public static ArrayList<Integer> trimPairElements(ArrayList<Integer> list) {
-
         int ind = 0;
         boolean flag = false;
         while (ind < list.size()) {
