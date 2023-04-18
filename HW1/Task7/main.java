@@ -1,4 +1,4 @@
-package Task7;
+package HW1.Task7;
 
 import java.util.ArrayList;
 import java.util.Random;
