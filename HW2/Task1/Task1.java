@@ -7,8 +7,8 @@ package HW2.Task1;
 
 public class Task1 {
     public static void main(String[] args) {
-        String s = "cba";
-        int[] index = { 3, 2, 1 }; // работает со всеми индексами. индексы как в условии не с 0 
+        String s = "1234567";
+        int[] index = { 3, 2, 1,4,7,6,5 }; // работает со всеми индексами. индексы как в условии не с 0 
         System.out.println(shuffle(s, index));
 
     }
