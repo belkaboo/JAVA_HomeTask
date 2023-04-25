@@ -1,13 +1,3 @@
-// На первой строке записывается натуральное число n - количество строчек в книге. 
-//Затем вводится n строк - строки книги. потом вводится натуральное число m - количество продуктов, на которые у человека аллергия. 
-//Потом вводится m строк - вида "продукт1 - продукт2", где продукт1 - продукт, на который у человека аллергия и продукт2 - продукт, 
-//на который следует заменить продукт1. Гарантируется что любой продукт состоит из 1 слова. название продуктов написаны строчными буквами. 
-//Гарантируется, что продукты, на которые нужно выполнить замену, не встречаются изначально в тексте.
-
-// Выходные данные
-// Замените все продукты в поваренной книге Васи и выведите их построчно на экран. На окончания не обращайте внимание. 
-//ВАЖНО!!! Если продукт, который следует заменить написан с большой буквы, то и замена тоже должна начинаться с большой буквы!
-
 // Sample Input:
 
 // 2
@@ -29,6 +19,7 @@ import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
 
+        System.out.print("\033[H\033[J");
         Scanner scan = new Scanner(System.in);
         System.out.printf("Введите кол-во строк в книге: ");
         int n = Integer.parseInt(scan.nextLine());
@@ -44,31 +35,51 @@ public class Task2 {
         int m = Integer.parseInt(scan.nextLine());
         String[] products = new String[m];
         for (int i = 0; i < products.length; i++) {
-            System.out.printf("%s,%d,%s", "Введите", i + 1, "пару продуктов: \n");
+            System.out.printf("%s %d %s", "Введите", i + 1, "пару продуктов: \n");
             products[i] = scan.nextLine().toString();
         }
 
+        System.out.print("\033[H\033[J");
+        System.out.println("Исходный вариант: ");
+        for (String item : recipes) {
+            System.out.println(item);
+        }
 
+        System.out.println("Замена: ");
 
         for (int i = 0; i < n; i++) {
             String[] RecipesResultArray = recipes[i].split(" ");
+
             for (int j = 0; j < m; j++) {
                 String[] ProductTmpArray = products[j].split(" - ");
                 for (int k = 0; k < RecipesResultArray.length; k++) {
 
-                    if (RecipesResultArray[k].toLowerCase().equals(ProductTmpArray[0].toLowerCase())) { // победить заглавную букву!!!!!
-                        RecipesResultArray[k] = ProductTmpArray[1];
-                        
-                        continue;
+                    if (RecipesResultArray[k].toLowerCase().equals(ProductTmpArray[0])) {
+
+                        if (CheckCase(RecipesResultArray[k])) {
+                            RecipesResultArray[k] = ProductTmpArray[1].substring(0, 1).toUpperCase()
+                                    + ProductTmpArray[1].substring(1);
+
+                        } else {
+                            RecipesResultArray[k] = ProductTmpArray[1];
+                        }
                     }
+
                 }
 
             }
-            System.out.println();
             System.out.println(String.join(" ", RecipesResultArray));
-            
         }
+
         scan.close();
+    }
+
+    public static boolean CheckCase(String str) { // проверка на заглавную букву
+        char[] check = str.toCharArray();
+        if (Character.isUpperCase(check[0])) {
+            return true;
+        } else
+            return false;
     }
 
 }
