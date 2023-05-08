@@ -47,10 +47,10 @@ public class Task2 {
 
         System.out.println("Замена: ");
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < recipes.length; i++) {
             String[] RecipesResultArray = recipes[i].split(" ");
 
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < products.length; j++) {
                 String[] ProductTmpArray = products[j].split(" - ");
                 for (int k = 0; k < RecipesResultArray.length; k++) {
 
